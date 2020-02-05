@@ -1,10 +1,33 @@
 #Task to install php packages
 ---
 
+- name: Enable remi repo for PHP 7.1.
+  set_fact: php_enablerepo="remi,remi-php71"
+  when: php_version == "7.1"
+
 - name: Install PHP Packages
   yum:
-    name: php
-    state: present
+    name: 
+    - php71
+    - php71-php-common
+    - php71-php-cli
+    - php71-php-fpm
+    - php71-php-pgsql
+    - php71-php-mysqlnd
+    - php71-php-gd
+    - php71-php-bz2
+    - php71-php-zip
+    - php71-php-json
+    - php71-php-xml
+    - php71-php-curl
+    - php71-php-intl
+    - php71-php-mbstring
+    - php71-php-mcrypt
+    - php71-php-bcmath
+    - php71-php-soap
+    - php71-php-opcache
+    - php71-php-pdo
+  state: present
 
 - name: Set PHP memory limit to 512MB
   lineinfile:

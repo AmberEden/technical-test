@@ -1,0 +1,16 @@
+#Task to Enable Epel repo
+---
+
+- name: Install basic tools 
+  yum:
+    name: 
+     - ncdu
+     - unzip
+     - traceroute
+     - vim
+     - atop
+     - wget
+     - vim
+     - mlocate
+     - net-tools
+

@@ -1,0 +1,15 @@
+#Task to Enable Epel repo
+---
+
+- name: Install MariaDB
+  yum:
+    name: 
+     - mariadb-server
+     - mariadb
+
+- name: Start the MariaDB service
+  action: service name=mariadb state=started
+
+- name: Remove the test database
+  mysql_db: name=test state=absent
+
