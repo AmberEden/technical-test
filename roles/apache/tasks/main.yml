@@ -1,0 +1,7 @@
+---
+- include: epel.yml
+- include: base.yml
+- include: php.yml
+- include: apache.yml
+- include: vhost.yml
+- include: sysctl.yml

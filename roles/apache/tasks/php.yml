@@ -1,0 +1,13 @@
+#Task to install php packages
+---
+
+- name: Install PHP Packages
+  yum:
+    name: php
+    state: present
+
+- name: Set PHP memory limit to 512MB
+  lineinfile:
+    path: /etc/php.ini
+    regexp: '^memory_limit ='
+    line: memory_limit = 512M

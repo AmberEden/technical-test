@@ -1,0 +1,46 @@
+--- 
+- name: Create and set ownership on vhost
+  file:
+    path: "{{ item.documentroot }}"
+    state: directory
+    owner: apache
+    group: apache
+    recurse: yes
+  with_items: "{{ apache_vhosts }}"
+
+- name: Create temporary download location
+  file:
+    path: "/tmp/wordpress-{{ item.wpversion }}"
+    state: directory
+    recurse: yes
+  with_items: "{{ apache_vhosts }}"
+  when: item.wpversion is defined
+
+- name: Download WordPress versions
+  get_url:
+    url: "https://en-gb.wordpress.org/wordpress-{{ item.wpversion }}-en_GB.zip"
+    dest: "/tmp/wordpress-{{ item.wpversion }}/wordpress-{{ item.wpversion }}-en_GB.zip"
+  with_items: "{{ apache_vhosts }}"
+  when: item.wpversion is defined
+
+- name: Unzip WordPress version to temporary location
+  unarchive:
+    remote_src: yes
+    src: "/tmp/wordpress-{{ item.wpversion }}/wordpress-{{ item.wpversion }}-en_GB.zip"
+    dest: "/tmp/wordpress-{{ item.wpversion }}/"
+    owner: apache
+    group: apache
+  with_items: "{{ apache_vhosts }}"
+  when: item.wpversion is defined
+
+- name: Copy WordPress base into documentroot
+  synchronize:
+    src: "/tmp/wordpress-{{ item.wpversion }}/wordpress/"
+    dest: "{{ item.documentroot }}/"
+    owner: yes 
+    group: yes
+    compress: no
+    rsync_opts:
+      - "--ignore-existing"
+  with_items: "{{ apache_vhosts }}"
+  when: item.wpversion is defined

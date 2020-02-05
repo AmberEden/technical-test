@@ -1,0 +1,13 @@
+#Task to Install Base System Packages
+---
+
+- name: Install Base System Packages
+  yum: 
+    name: "{{ base_packages }}"
+    state: present
+
+- name: Install Epel Base System Packages
+  yum:
+    name: "{{ base_epel_packages }}"
+    state: present
+    enablerepo: epel
