@@ -20,13 +20,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'democom' );
+define( 'DB_NAME', '{{ wp_db_name }}' );
 
 /** MySQL database username */
-define( 'DB_USER', 'demo' );
+define( 'DB_USER', '{{ wp_db_username }}' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'ZJa1x8fl' );
+define( 'DB_PASSWORD', '{{ wp_db_password }}' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
@@ -63,7 +63,7 @@ define( 'NONCE_SALT',       'pt3NRFlgyufWmk32' );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = '{{ wp_table_prefix }}';
 
 /**
  * For developers: WordPress debugging mode.
@@ -77,7 +77,7 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', {{ wp_debug_mode }} );
 
 /* That's all, stop editing! Happy publishing. */
 
