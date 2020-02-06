@@ -85,3 +85,9 @@ wp_db_password: "ZJa1x8fl"
 wp_db_host: 'localhost'
 wp_table_prefix: 'wp_'
 wp_debug_mode: 'FALSE'
+
+WP_DOMAIN: demo.com
+WP_ADMIN_USERNAME: demo
+WP_ADMIN_EMAIL: me@demo.com
+WP_ADMIN_PASSWORD: JkiloE9upp)nElURQh
+
