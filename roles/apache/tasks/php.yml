@@ -1,9 +1,9 @@
 #Task to install php packages
 ---
 
-- name: Enable remi repo for PHP 7.1.
+- name: Enable remi repo for PHP 71.
   set_fact: php_enablerepo="remi,remi-php71"
-  when: php_version == "7.1"
+  when: php_version == "71"
 
 - name: Install PHP Packages
   yum:

@@ -1,6 +1,6 @@
 ---
-- include: setup.yml
 - include: epel.yml
+- include: setup.yml
 - include: base.yml
 - include: php.yml
 - include: mysql.yml
