@@ -27,7 +27,7 @@
     - php-soap
     - php-opcache
     - php-pdo
-  state: present
+# state: present
 
 - name: Set PHP memory limit to 512MB
   lineinfile:

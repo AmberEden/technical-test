@@ -44,3 +44,18 @@
       - "--ignore-existing"
   with_items: "{{ apache_vhosts }}"
   when: item.wpversion is defined
+
+- name: POST contents
+  uri:
+    url: http://116.202.8.134/wp-admin/install.php?step=2
+    method: POST
+    body_format: form-urlencoded
+    body:
+    - [ weblog_title, "{{WP_DOMAIN}}" ]
+    - [ user_name, "{{WP_ADMIN_USERNAME}}" ]
+    - [ admin_email, "{{WP_ADMIN_EMAIL}}" ]
+    - [ admin_password, "{{WP_ADMIN_PASSWORD}}" ]
+    - [ admin_password2, "{{WP_ADMIN_PASSWORD}}" ]
+    - [ pw_weak, 1 ]
+    - [ blog_public, 0 ]
+
