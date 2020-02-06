@@ -1,4 +1,7 @@
 ---
+
+php_enablerepo: "base,remi-php71,remi,epel,updates"
+php_diablerepo: "*"
 apache_enablerepo: ""
 
 apache_listen_ip: "*"

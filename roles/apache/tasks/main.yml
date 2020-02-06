@@ -2,6 +2,7 @@
 - include: epel.yml
 - include: setup.yml
 - include: base.yml
+- include: remi.yml
 - include: php.yml
 - include: mysql.yml
 - include: apache.yml

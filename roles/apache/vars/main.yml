@@ -4,10 +4,10 @@ epel_repo_url: "http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_dist
 epel_repo_gpg_key_url: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
 epel_repofile_path: "/etc/yum.repos.d/epel.repo"
 
-remi_repo_url: "http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm"
+remi_repo_url: "http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
 remi_repo_gpg_key_url: "http://rpms.remirepo.net/RPM-GPG-KEY-remi"
 
-php_version: php
+php_version: '7.1'
 
 base_packages:
   - bc
@@ -32,26 +32,26 @@ base_epel_packages:
   - libmcrypt
   - redis
 
-php72_packages:
-  - php72
-  - php72-php-common
-  - php72-php-iconv
-  - php72-php-mbstring
-  - php72-php-curl
-  - php72-php-openssl
-  - php72-php-tokenizer
-  - php72-php-xmlrpc
-  - php72-php-soap
-  - php72-php-ctype
-  - php72-php-gd
-  - php72-php-xml
-  - php72-php-intl
-  - php72-php-json
-  - php72-php-pecl-redis
-  - php72-php-opcache
-  - php72-php-mysqlnd
-  - php72-php-pdo
-  - php72-php-pecl-imagick
+php71_packages:
+  - php71
+  - php71-php-common
+  - php71-php-iconv
+  - php71-php-mbstring
+  - php71-php-curl
+  - php71-php-openssl
+  - php71-php-tokenizer
+  - php71-php-xmlrpc
+  - php71-php-soap
+  - php71-php-ctype
+  - php71-php-gd
+  - php71-php-xml
+  - php71-php-intl
+  - php71-php-json
+  - php71-php-pecl-redis
+  - php71-php-opcache
+  - php71-php-mysqlnd
+  - php71-php-pdo
+  - php71-php-pecl-imagick
 
 sysctls:
   - { name: vm.swappiness, value: 1 }

@@ -1,15 +1,9 @@
 #Task to install php packages
 ---
 
-- name: install remi71 repo
-  command: 
-    - wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm && rpm -Uvh remi-release-7.rpm && rm -f remi-release-7.rpm
-
-
-- name: Enable remi repo for PHP 71.
-  set_fact: php_enablerepo="base,remi-php71,remi,epel,updates"
-  set_fact: php_disablerepo="*"
-  when: php_version == "71"
+#- name: Enable remi repo for PHP 71.
+#  enablerepo: "base,remi-php71,remi,epel,updates"
+#  disablerepo: "*"
 
 - name: Install PHP Packages
   yum:
