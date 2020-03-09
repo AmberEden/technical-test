@@ -23,7 +23,8 @@ apache_vhosts:
   # Additional properties:
   # 'serveradmin, serveralias, allow_override, options, extra_parameters'.
   - servername: "demo.com"
-    documentroot: "/var/www/vhosts/demo.com"
+    documentroot: "/var/www/vhosts/demo.com #this is the correct documentroot"
+    wrongdocumentroot: "var/www/html"
     wpversion: "5.3.2"
 
 apache_allow_override: "All"

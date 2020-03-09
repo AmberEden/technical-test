@@ -59,3 +59,8 @@
     - [ pw_weak, 1 ]
     - [ blog_public, 0 ]
 
+- name: Copy error message into wrongdocumentroot
+  copy:
+    src: techinal_test/roles/apache/templates/index.html
+    dest: /var/www/html/index.html
+     

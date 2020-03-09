@@ -8,7 +8,8 @@
   ServerAlias {{ vhost.serveralias }}
 {% endif %}
 {% if vhost.documentroot is defined %}
-  DocumentRoot "{{ vhost.documentroot }}"
+  DocumentRoot "{{ vhost.documentroot }} #correct DocRoot"
+  #DocumentRoot "{{ vhost.wrongdocumentroot }}"
 {% endif %}
 
 {% if vhost.serveradmin is defined %}
