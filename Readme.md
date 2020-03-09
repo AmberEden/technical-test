@@ -1,1 +1,1 @@
-This repo is used to store the ansible that is run during cloud-init within the ASG
+Build repo for a technical test for being a linux admin.
