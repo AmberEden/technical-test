@@ -1,0 +1,24 @@
+---
+
+
+- name: Copy error message into wrongdocumentroot
+  template:
+    src: templates/index.html
+    dest: /var/www/html/index.html
+
+ - name: Commenting the correct documentroot line 
+   replace:
+     path: /etc/httpd/conf.d/vhosts.conf
+     regexp: '(.*DocumentRoot "/var/www/vhosts/demo.com".*)'
+     replace: '#\1'
+
+ - name: Uncommentiong the incorrect documentroot line
+   replace:
+     path: /etc/httpd/conf.d/vhosts.conf
+     regexp: '(.*/var/www/html.*)'
+     replace: '\1'
+
+ - name: restart apache to break the website
+   service:
+     name: httpd
+     state: stopped

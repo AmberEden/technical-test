@@ -47,7 +47,7 @@
 
 - name: POST contents
   uri:
-    url: http://116.202.8.134/wp-admin/install.php?step=2
+    url: http://127.0.0.1/wp-admin/install.php?step=2
     method: POST
     body_format: form-urlencoded
     body:
@@ -59,8 +59,3 @@
     - [ pw_weak, 1 ]
     - [ blog_public, 0 ]
 
-- name: Copy error message into wrongdocumentroot
-  copy:
-    src: techinal_test/roles/apache/templates/index.html
-    dest: /var/www/html/index.html
-     
