@@ -1,0 +1,14 @@
+---
+
+- name: Create a directory /root/files if it does not exist
+  file:
+    path: /root/files
+    state: directory
+    mode: '0755'
+
+- name: Create a 1G file
+  shell: dd if=/dev/zero of=/root/files/image00.png count=10240 bs=1024
+
+- name: Create many random small files
+  shell: for i in {1..10}; do dd if=/dev/zero of=image$i.png bs=1 count=$RANDOM; done
+
