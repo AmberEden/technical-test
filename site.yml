@@ -1,5 +1,5 @@
 - hosts: all
-  connection: local
+#  connection: local
   roles:
   - build-it
-#  - break-it
+  - break-it

@@ -47,7 +47,7 @@
 
 - name: POST contents
   uri:
-    url: http://127.0.0.1/wp-admin/install.php?step=2
+    url: "http://{{ ansible_all_ipv4_addresses | first }}/wp-admin/install.php?step=2"
     method: POST
     body_format: form-urlencoded
     body:

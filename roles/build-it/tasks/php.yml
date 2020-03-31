@@ -1,10 +1,6 @@
 #Task to install php packages
 ---
 
-#- name: Enable remi repo for PHP 71.
-#  enablerepo: "base,remi-php71,remi,epel,updates"
-#  disablerepo: "*"
-
 - name: Install PHP Packages
   yum:
     name: 
@@ -23,14 +19,13 @@
     - php-intl
     - php-mbstring
     - php-mcrypt
-    - php-bcmath
     - php-soap
     - php-opcache
     - php-pdo
 # state: present
 
-- name: Set PHP memory limit to 512MB
+- name: Set PHP memory limit to 256MB
   lineinfile:
     path: /etc/php.ini
     regexp: '^memory_limit ='
-    line: memory_limit = 512M
+    line: memory_limit = 256M
