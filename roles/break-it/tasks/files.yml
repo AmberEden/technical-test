@@ -10,5 +10,6 @@
   shell: dd if=/dev/zero of=/root/files/image00.png count=10240 bs=1024
 
 - name: Create many random small files
-  shell: for i in {1..10}; do dd if=/dev/zero of=image$i.png bs=1 count=$RANDOM; done
-
+  shell: for i in {1..10}; do dd if=/dev/zero of=/root/files/image$i.png bs=1 count=$RANDOM; done
+  args:
+    executable: /bin/bash

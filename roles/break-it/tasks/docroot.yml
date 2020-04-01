@@ -17,7 +17,13 @@
     regexp: '^#(.*/var/www/html.*)'
     replace: '\1'
 
-- name: restart apache to break the website
+- name: Have apache listen in on port 8080
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    insertafter: Listen 80
+    line: Listen 8080
+
+- name: Restart apache to break the website
   service:
     name: httpd
-    state: stopped
+    state: restarted
