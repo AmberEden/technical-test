@@ -6,6 +6,7 @@ apache_enablerepo: ""
 
 apache_listen_ip: "*"
 apache_listen_port: 80
+apache_listen_port_8080: 8080
 apache_listen_port_ssl: 443
 
 apache_create_vhosts: true
@@ -25,6 +26,7 @@ apache_vhosts:
   - servername: "demo.com"
     documentroot: "/var/www/vhosts/demo.com"
     wrongdocumentroot: "/var/www/html"
+    8080documentroot: "/var/www/vhosts/8080-demo.com"
     wpversion: "5.3.2"
 
 apache_allow_override: "All"

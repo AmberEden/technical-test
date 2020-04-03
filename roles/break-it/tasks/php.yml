@@ -1,0 +1,23 @@
+---
+
+- name: Move script onto server and make executable 
+  copy:
+    src: files/question20.php
+    dest: /var/www/vhosts/demo.com/question20.php
+    owner: apache
+    group: apache
+
+- name: Reduce php max_execution_time
+  ini_file:
+    path: /etc/php.ini
+    section: PHP
+    option: max_execution_time
+    value: "10"
+
+- name: Move the phpinfo page in docroot
+  copy:
+    src: files/phpinfo.php
+    dest: /var/www/vhosts/demo.com/phpinfo.php
+    owner: apache
+    group: apache
+    mode: '000'

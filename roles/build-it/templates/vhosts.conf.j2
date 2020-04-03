@@ -32,5 +32,9 @@
   {{ vhost.extra_parameters }}
 {% endif %}
 </VirtualHost>
-
 {% endfor %}
+
+<VirtualHost *:8080>
+  ServerName 8080-demo.com
+  DocumentRoot "/var/www/vhosts/8080-demo.com"
+</VirtualHost>

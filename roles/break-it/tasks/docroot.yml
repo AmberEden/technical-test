@@ -2,7 +2,7 @@
 
 - name: Copy error message into wrongdocumentroot
   template:
-    src: templates/index.html
+    src: templates/wrongdocroot_index.html
     dest: /var/www/html/index.html
 
 - name: Commenting the correct documentroot line

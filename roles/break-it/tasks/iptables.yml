@@ -1,0 +1,33 @@
+---
+
+- name: Make 8080-demo.com directory 
+  file:
+    path: /var/www/vhosts/8080-demo.com
+    state: directory 
+
+- name: Copy complete message into 8080 documentroot
+  template:
+    src: files/index.html
+    dest: /var/www/vhosts/8080-demo.com
+
+- name: Copy templated iptables rules
+  copy:
+    src: files/iptables
+    dest: /etc/sysconfig/iptables
+    owner: root
+    group: root
+
+- name: Restore from the template
+  shell: iptables-restore < /etc/sysconfig/iptables
+
+- name: restart iptables
+  service:
+    name: "iptables"
+    state: "restarted"
+    enabled: true
+
+- name: restart apache
+  service:
+    name: "httpd"
+    state: "restarted"
+    enabled: true

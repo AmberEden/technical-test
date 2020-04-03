@@ -13,3 +13,9 @@
   shell: for i in {1..10}; do dd if=/dev/zero of=/root/files/image$i.png bs=1 count=$RANDOM; done
   args:
     executable: /bin/bash
+
+- name: Move over results.sh
+  copy:
+    src: files/results.sh
+    dest: /opt/results.sh
+  

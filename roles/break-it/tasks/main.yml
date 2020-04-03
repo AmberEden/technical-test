@@ -1,3 +1,6 @@
 ---
 - include_tasks: docroot.yml
 - include_tasks: files.yml
+- include_tasks: php.yml
+- include_tasks: iptables.yml
+- include_tasks: mysql.yml
