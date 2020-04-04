@@ -1,13 +1,4 @@
 ---
-#- include: epel.yml
-#- include: setup.yml
-#- include: base.yml
-#- include: remi.yml
-#- include: php.yml
-#- include: mysql.yml
-#- include: apache.yml
-#- include: vhost.yml
-#- include: sysctl.yml
 
 - include_tasks: epel.yml
 - include_tasks: setup.yml
