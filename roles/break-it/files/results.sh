@@ -5,6 +5,8 @@ RED='\033[1;31m'
 GREEN='\033[1;32m'
 ORANGE='\033[1;33m'
 
+IP=`curl -s 4.icanhazip.com`
+
 if [ "`grep -c -i '^john' /etc/passwd`" -eq 1 ]; then
     echo -e "[Q10]     ${GREEN}[Passed]${NOCOLOR}     User 'john' exists"
 else
@@ -33,7 +35,7 @@ else
     echo -e "[Q13]     ${RED}[Failed]     !${NOCOLOR} php-bcmath is not installed"
 fi
 
-if [ "`grep memory_limit /etc/php.ini | cut -d= -f2 | awk '{$1=$1};1'`" == "512M" ]; then
+if [ "`grep memory_limit /etc/php.ini | grep -v '#\|;' | cut -d= -f2 | awk '{$1=$1};1'`" == "512M" ]; then
     echo -e "[Q14]     ${GREEN}[Passed]${NOCOLOR}     memory_limit=512M"
 else
     echo -e "[Q14]     ${RED}[Failed]     !${NOCOLOR} memory_limit=`grep memory_limit /etc/php.ini | awk '{print $3}'`. Correct answer = 512M"
@@ -59,10 +61,10 @@ else
     echo -e "[Q17]     ${RED}[Failed]     !${NOCOLOR} File is not present '/root/archived_images/image00.png'."
 fi
 
-if [ "`curl -s -o /dev/null -w "%{http_code}"  http://95.217.161.70/wp-login.php`" -eq 200 ]; then
+if [ "`curl -s -o /dev/null -w "%{http_code}"  http://$IP/wp-login.php`" -eq 200 ]; then
     echo -e "[Q18]     ${GREEN}[Passed]${NOCOLOR}     Able to reach the wordpress website. "
 else
-    echo -e "[Q18]     ${RED}[Failed]     !${NOCOLOR} Unable to access wordpress." 
+    echo -e "[Q18]     ${RED}[Failed]     !${NOCOLOR} Unable to access wordpress."
 fi
 
 if [ "`find /var/www/vhosts/demo.com/wp-content/uploads/ -type f -size +8M | wc -l`" -ge 1 ]; then
@@ -71,19 +73,19 @@ else
     echo -e "[Q19]     ${RED}[Failed]     !${NOCOLOR} File has not been uploaded to /var/www/vhosts/demo.com/wp-content/uploads. `grep upload_max_filesize /etc/php.ini` `grep post_max_size /etc/php.ini`"
 fi
 
-if [ "`curl -s -o /dev/null -w "%{http_code}"  http://95.217.161.70/question20.php`" -eq 200 ]; then
+if [ "`curl -s -o /dev/null -w "%{http_code}"  http://$IP/question20.php`" -eq 200 ]; then
     echo -e "[Q20]     ${GREEN}[Passed]${NOCOLOR}     Script ran successfully, `grep max_execution_time /etc/php.ini`"
 else
     echo -e "[Q20]     ${RED}[Failed]     !${NOCOLOR} Script does not run successfully, `grep max_execution_time /etc/php.ini`"
 fi
 
-if [ "`curl -s -o /dev/null -w "%{http_code}" http://95.217.161.70:8080`" -eq 200 ]; then
+if [ "`curl -s -o /dev/null -w "%{http_code}" http://$IP:8080`" -eq 200 ]; then
     echo -e "[Q21]     ${GREEN}[Passed]${NOCOLOR}     Able to connect on port 8080"
 else
     echo -e "[Q21]     ${RED}[Failed]     !${NOCOLOR} Unable to connect on port 8080"
 fi
 
-if [ "`curl -s -o /dev/null -w "%{http_code}" http://95.217.161.70/phpinfo.php`" -eq 200 ]; then
+if [ "`curl -s -o /dev/null -w "%{http_code}" http://$IP/phpinfo.php`" -eq 200 ]; then
     echo -e "[Q21]     ${GREEN}[Passed]${NOCOLOR}     Permissions error resolved and phpinfo page returns a 200 ok"
 else
     echo -e "[Q21]     ${RED}[Failed]     !${NOCOLOR} Unable to return the phpinfo page."
